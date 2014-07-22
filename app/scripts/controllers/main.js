@@ -45,12 +45,13 @@ angular.module('billShareApp')
 
     function toggleDetail($event) {
       jQuery('.collapse.in').collapse('hide');
+      jQuery('.more').css('display', 'block');
       $scope.isCollapse = true;
       var element = $event.target;
       var panel = jQuery(element).parents('.panel');
       var eCollapse = panel.children('.collapse:not(.in)');
       if (eCollapse.length > 0) {
-        $scope.isCollapse = false;
+        panel.children('.more').css('display', 'none');
       }
       eCollapse.collapse('show');
     }
