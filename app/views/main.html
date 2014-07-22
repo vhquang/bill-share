@@ -1,0 +1,97 @@
+<div class="container row text-right">
+  <h4>Total: <span style="color: darkred; font-weight: bold; text-decoration: underline;">{{getBillTotal() | number:2}}</span></h4>
+</div>
+
+<div class="panel-group">
+
+  <div class="panel panel-default" ng-repeat="person in party" style="margin-bottom: 20px;">
+
+    <div class="panel-heading">
+      <div class="panel-title">
+        <div ng-click="toggleDetail($event)">
+          <!--<span class="glyphicon glyphicon-minus-sign" ng-click="deletePerson($index); $event.stopPropagation();"-->
+                <!--style="color: crimson; margin-left: -6px; margin-right: 13px; width: 10px;"></span>-->
+          <span class="list-heading-title">{{person.name}}</span>
+          <span class="pull-right" style="color: darkorange">{{getTotal(person.cost) | number:2}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-collapse collapse">
+      <div class="panel-body">
+
+        <div ng-repeat="item in person.order track by $index" class="form-group">
+          <div class="input-group" style="width: 60%">
+
+            <input class="form-control no-border" type="number"
+                   style="border: none; box-shadow: none; border-bottom: 1px solid #eaeaea;"
+                   ng-model="item" ng-blur="updateItem(person, $index, item);">
+
+            <div class="input-group-addon"
+                 style="border: none; box-shadow: none; background-color: transparent;"
+                 ng-click="deleteItem(person, $index);">
+              <span class="glyphicon glyphicon-remove" style="color: #c0c0c0; font-size: 18px;"></span>
+            </div>
+
+          </div>
+        </div>
+
+        <input-add-new placeholder="+ Add item" type="number" step="any" style="width: 50%;"
+                       parent-object="person" add-fn="addItem(parentObject, value);"></input-add-new>
+      </div>
+    </div>
+
+    <div class="text-center more" ng-click="toggleDetail($event)">
+      <span ng-repeat="i in [1,2,3]">.</span>
+    </div>
+
+    <div class="row container text-right" style="color: darkgrey; font-style: italic;">
+      <div style="padding: 10px;">
+        <span class="glyphicon glyphicon-trash pull-left" ng-click="deletePerson($index); $event.stopPropagation();"
+              style="color: darkgray; margin-left: 6px; margin-right: 13px; width: 10px;"></span>
+        <span>Order:</span> <span style="margin-right: 5px;">{{person.cost | number:2}}</span>
+        <span>Tax:</span> <span style="margin-right: 5px;">{{calculateTax(person.cost) | number:2}}</span>
+        <span>Tip:</span> <span>{{calculateTip(person.cost) | number:2}}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center" style="margin-top: 20px;">
+    <input-add-new placeholder="+ Add person" size="large"
+                   style="width: 80%;"
+                   add-fn="addPerson(value);"></input-add-new>
+  </div>
+
+</div>
+
+
+<div class="row" style="margin-top: 50px;margin-bottom: 20px;">
+  <div class="col-xs-6">
+    <div class="input-group">
+        <div class="input-group-addon no-hover">
+          <!--<button class="btn btn-default no-hover">Tax:</button>-->
+          <span>Tax:</span>
+        </div>
+      <input class="form-control" type="number" step="any" ng-model="tax"/>
+        <div class="input-group-addon no-hover">
+          <!--<button class="btn btn-default no-hover">%</button>-->
+          <span>%</span>
+        </div>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+
+  <div class="col-xs-6">
+    <div class="input-group">
+        <span class="input-group-addon no-hover">
+          <!--<button class="btn btn-default no-hover">Tip:</button>-->
+          <span>Tip:</span>
+        </span>
+      <input class="form-control" type="number" step="any" ng-model="tip"/>
+        <span class="input-group-addon no-hover">
+          <!--<button class="btn btn-default no-hover">%</button>-->
+          <span>%</span>
+        </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->

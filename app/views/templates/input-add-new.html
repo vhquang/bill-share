@@ -1,0 +1,20 @@
+<div class="input-add-new container" style="">
+  <div class="row form-group">
+    <div class="input-group">
+      <div class="input-group-addon" style="border: none; box-shadow: none; background-color: transparent;">
+        <!--<span class="glyphicon glyphicon-plus" style="color: #73A9DD;"></span>-->
+      </div>
+      <input type="text" ng-model="inputValue" class="form-control"
+             ng-class="{'input-lg': size === 'large'}"/>
+    </div>
+  </div>
+  <div class="row form-group" ng-show="inputValue">
+    <div class="input-group">
+      <div class="input-group-addon" style="border: none; box-shadow: none; background-color: transparent;">
+        <!--<span class="glyphicon glyphicon-plus" style="color: #73A9DD;"></span>-->
+      </div>
+      <input type="text" class="form-control"
+             ng-class="{'input-lg': size === 'large'}"/>
+    </div>
+  </div>
+</div>
