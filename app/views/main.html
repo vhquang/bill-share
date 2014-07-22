@@ -36,12 +36,12 @@
           </div>
         </div>
 
-        <input-add-new placeholder="+ Add item" type="number" step="any" style="width: 50%;"
+        <input-add-new placeholder="+ Add item price" type="number" step="any" style="width: 50%;"
                        parent-object="person" add-fn="addItem(parentObject, value);"></input-add-new>
       </div>
     </div>
 
-    <div class="more text-center" style="color: darkgray; letter-spacing: 7px;" ng-click="toggleDetail($event)">
+    <div class="more text-center" ng-click="toggleDetail($event)">
       <span ng-repeat="i in [1,2,3]">.</span>
     </div>
 

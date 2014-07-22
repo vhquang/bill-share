@@ -1,6 +1,6 @@
 body {
   background-image: url('../images/pattern14.png');
-  background-repeat: repeat repeat;"
+  background-repeat: repeat repeat;
 }
 
 .list-heading-title {
@@ -51,6 +51,11 @@ input:focus.form-control.no-border {
   color: darkgrey !important;
   padding-left: 4px !important;
   padding-right: 4px !important;
+}
+
+.more {
+  color: #7F99B3;
+  letter-spacing: 7px;
 }
 
 /* Space out content a bit */
