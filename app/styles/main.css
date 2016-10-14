@@ -58,6 +58,11 @@ input:focus.form-control.no-border {
   letter-spacing: 7px;
 }
 
+
+.top-space {
+  margin-top: 50px
+}
+
 /* Space out content a bit */
 /*body {*/
   /*padding-top: 20px;*/
